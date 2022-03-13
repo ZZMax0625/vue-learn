@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <div id="box" v-on:click = "moveUp($event)" :style="boxHeight">
+            <h2 v-cloak>当前计数:{{count}}</h2>
+            <button @click="increasement">增加</button>
+            <button @click="decreasement">减少</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    count : 0
+                }
+            },
+            methods: {
+                increasement(){
+                    this.count++
+                },
+                decreasement(){
+                    this.count--
+                }
+            },
+        });
+        const vm = app.mount('#app')
+    </script>
+</body>
+</html>
