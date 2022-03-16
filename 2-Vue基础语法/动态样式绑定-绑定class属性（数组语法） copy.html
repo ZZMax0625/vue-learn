@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* h2 {
+            width: 200px;
+            height: 200px;
+        } */
+        .blue {
+            color: blue;
+        }
+        .red {
+            border: 1px solid red;
+        }
+        .green {
+            color: green;
+        }
+        .grey {
+            border: 1px solid gray;
+        }
+        .blod {
+            font-weight:800;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2 :class="cssArray">
+            动态绑定样式(数组语法)
+        </h2>
+
+        <button @click="changeColor">切换颜色</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    // isBlue: true,
+                    cssArray:["bold","blue"],
+                }
+            },
+            // computed: {
+            //     h2Class(){
+            //         return { blue:this.isBlue,red:this.isRed };
+            //     },
+            // },
+            methods: {
+                changeColor(){
+                    // 如果不是蓝色，则弹出当前颜色，push进蓝色
+                    if(this.cssArray[1] !== 'blue'){
+                        this.cssArray.pop();
+                        this.cssArray.push("blue");
+                    }
+                    else{
+                        // 当前就是
+                        this.cssArray.pop();
+                        this.cssArray.push("green");
+                    }
+                },
+            },
+        });
+        const vm = app.mount('#app')
+    </script>
+</body>
+
+</html>

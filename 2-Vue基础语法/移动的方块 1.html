@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>移动的方块</title>
+    <style>
+        #app {
+            width: 800px;
+            height: 800px;
+            margin: 0 auto;
+            background-color: rgb(82, 139, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div id="app" tabindex="1" @keydown="move($event)">
+            <div id="box"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    left: 380,
+                    top: 380
+                }
+            },
+            methods: {
+                move(e) {
+                    console.log(e)
+                    switch (e.keyCode) {
+                        case 37:
+                            this.left -= 50
+                            break;
+                        case 38:
+                            this.top -= 50
+                            break;
+                        case 39:
+                            this.left += 50
+                            break;
+                        case 40:
+                            this.top += 50
+                            break;
+                    }
+                    
+                    let box = document.getElementById('box')
+
+
+                    if (this.top < 0) {
+                        this.top = 0
+                    }
+
+                    if (this.left < 0) {
+                        this.left = 0
+                    }
+
+                    box.style.left = this.left + 'px'
+                    box.style.top = this.top + 'px'
+                }
+            },
+        })
+        const vm = app.mount('#root');
+    </script>
+</body>
+
+</html>

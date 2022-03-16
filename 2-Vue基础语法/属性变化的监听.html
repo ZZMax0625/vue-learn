@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <input v-model="firstName" type="text" />
+        <input v-model="lastName" type="text" />
+        <h2>全名:{{fullName}}</h2>
+        <h2>全名:{{getFullName()}}</h2>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    firstName:"",
+                    lastName:"",
+                }
+            },
+            watch:{
+                firstName:{
+                    
+                }
+            }
+        });
+        const vm = app.mount('#app')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <h3>你的选择是：{{checks}}</h3>
+
+        <label for="Vue">
+            <input type="checkbox" id="Vue" value="Vue" v-model="checks" checked>
+            Vue
+        </label>
+        <label for="Springboot">
+            <input type="checkbox" id="Springboot" value="Springboot" v-model="checks">
+            Springboot
+        </label>
+
+
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    gender:"male",
+                    checks:[],
+                }
+            },
+        });
+        const vm = app.mount('#app')
+    </script>
+</body>
+
+</html>

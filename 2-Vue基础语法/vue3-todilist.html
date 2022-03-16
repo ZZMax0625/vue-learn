@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue3实现todolist-了解循环和双向绑定</title>
+    <style>
+        .blueFont {
+            color: blue;
+        }
+
+        .blackFont {
+            color: black;
+        }
+        .finished {
+            text-decoration: line-through;
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input v-model="inputValue">
+            <button v-on:click="handleAddItem">增加</button>
+            <ul>
+                <li v-for="(item,index) of list" :class="{finished:item.finished}" @click="finish(index)">{{item.title}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    inputValue:"",
+                    list: [
+                        {
+                            title:"买菜",
+                            finished:false,
+                        },
+                        {
+                            title:"寄信",
+                            finished:true,
+                        }
+                    ],
+                };
+            },
+
+            methods: {
+                handleAddItem(){
+                    this.list.push({title:this.inputValue,finished:false});
+                    this.inputValue = '';
+                },
+                finish(index){
+                    alert(index)
+                    this.list[index].finished = !this.list[index].finished;
+                }
+            },
+        }).mount("#app");
+    </script>
+</body>
+</html>
