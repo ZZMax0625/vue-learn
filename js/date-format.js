@@ -1,5 +1,5 @@
 
-function formatDate(dt) {
+export default function formatDate(dt) {
     // 获取 年 月 日
     let y = dt.getFullYear();
     let m = (dt.getMonth() + 1).toString().padStart(2, '0');
@@ -10,7 +10,7 @@ function formatDate(dt) {
     let mm = dt.getMinutes().toString().padStart(2, '0');
     let ss = dt.getSeconds().toString().padStart(2, '0');
 
-    let formatStr = `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+    let formatStr = `${y}年${m}-${d} ${hh}:${mm}:${ss}`;
 
     return formatStr;
 }

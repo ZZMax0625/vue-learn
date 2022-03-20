@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父子组件练习</title>
+    <style>
+        .head-img {
+            width: 66px;
+            height: 66px;
+            background-color: #fff;
+            padding: 3px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+            margin: 0 auto 10px;
+            box-sizing: border-box;
+            border-radius: 50%;
+        }
+
+        .head-img img {
+            display: block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        .avatar-card{
+            width: 150px;
+            height: 200px;
+            background-color: #666699;
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding-top: 30px;
+        }
+        .text{
+            font-weight: bolder;
+            text-align: center;
+            color: gold;
+        }
+        .parent{
+            margin: 0 auto;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <parent class="parent"></parent>
+    </div>
+
+    <template id="Child">
+        <div class="head-img">
+            <img src="嘉然流汗.png">
+        </div>
+    </template>
+
+    <template id="Parent">
+        <div class="avatar-card">
+            <child></child>
+            <p class="text">用户名</p>
+            <p class="text">SVIP</p>
+        </div>
+    </template>
+    <script src="vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            components: {
+                Parent: {
+                    template: '#Parent',
+                    components: {
+                        Child: {
+                            template: '#Child'
+                        }
+                    }
+                }
+            }
+        })
+        let vm = app.mount("#app")
+    </script>
+</body>
+
+</html>

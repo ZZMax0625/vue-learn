@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <counter-parent></counter-parent>
+    </div>
+    <script src="vue.global.js"></script>
+    <script>
+        
+        let app = Vue.createApp({
+        })
+
+        app.component('CounterParent',{
+            template: `<counter/>`
+        })
+
+        app.component('Counter',{
+            data(){
+                return{
+                    count:1
+                }
+            },
+            template: `
+            <div style="width: 100px;height: 100px;background-color: grey;text-align: center;">
+                <span>{{count}}</span>
+                <br/>
+                <button @click="count+=1">点击</button>
+            </div>
+            `
+        })
+        let vm = app.mount("#app")
+    </script>
+</body>
+
+</html>
